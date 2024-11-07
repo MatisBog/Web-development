@@ -1,0 +1,11 @@
+a::before {
+    content: "";
+    background-image: url('../images/HyperlinkAfbeelding.png');
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+

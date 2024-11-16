@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+section {
+    margin: auto;
+}
+section>header{
+    background-image: url("../images/nature_header.jpg.jpg");
+    background-size: cover;
+    margin-top : 10px;
+    height : 100px;
+    padding-bottom : 25px;
+}
+section>header>h1{
+    color: white;
+    font-size: 50px;
+    margin : 10px 0 0 5px;
+}
+nav{
+    background-color: #3a3a3a;
+    padding: 0 5px;
+    font-weight: bold;
+}
+nav>a{
+    color: #55ee88;
+    font-weight: bold;
+}
+article{
+    background-color: #eeeeee;
+    padding-left: 10px;
+    margin-top: -25px;
+}
+article>header>h1 {
+    color: #444444;
+    text-decoration: underline;
+    font-size: 1.5em;
+    padding-top: 25px;
+}
+article>footer{
+    padding-bottom: 5px;
+}
+
+

@@ -1,0 +1,68 @@
+body {
+    font: 1.2em "Verdana, Helvetica, Arial";
+    width: 95%;
+    margin: auto;
+}
+
+header {
+    margin: auto;
+}
+
+header img {
+    width: 50%;
+    align-self: center;
+}
+
+.class70\% {
+    width: 70%;
+    float: left;
+}
+
+.rest-class {
+    width: 30%;
+    float: right;
+    text-align: center;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 130%;
+}
+
+.class70\% h1,
+.class70\% h2 {
+    color: #007e7e;
+}
+
+.rest-class h1 {
+    color: black;
+}
+
+.rest-class h2 {
+    color: red;
+}
+
+footer {
+    font-size: 50%;
+    text-align: center;
+    clear: both;
+}
+
+.rest-class a:hover {
+    background-color: brown;
+    color: white;
+}
+
+#guarantee {
+    margin: 30px;
+    padding: 20px;
+    color: #444444;
+    background-color: #a7cece;
+    border: 1px white dotted;
+}
+header p{
+    text-align: center;
+}

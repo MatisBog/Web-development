@@ -36,10 +36,13 @@ body {
 .card header {
   text-align: center;
   border-block-end: 1px solid hsl(0, 0%, 59%);
+  max-inline-size: 80%;
+  margin : 0 auto;
 }
 
 .card header div {
   display: inline-block;
+  max-inline-size: 80%;
 }
 
 /* foto krijgt een cirkelvorm */

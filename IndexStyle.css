@@ -51,7 +51,7 @@ ol>li:hover a{
 }
 main>ul{
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     flex-wrap: wrap;
     justify-content: space-around;
 }

@@ -1,0 +1,26 @@
+#playField {
+    box-sizing: border-box;
+    border : 1px solid black;
+    height: 800px;
+    width: 600px;
+    position : relative;
+    margin : 0 auto;
+}
+#header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+#scoreBoard {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#startButton {
+    cursor: pointer;
+    font-size: 16px;
+}
+#target {
+    position: absolute;
+}

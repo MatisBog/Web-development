@@ -1,65 +1,81 @@
-const setup = () => {
-    const red = document.getElementById("red");
-    const green = document.getElementById("green");
-    const blue = document.getElementById("blue");
-    const colorBox = document.getElementById("colorBox");
-    const saveButton = document.getElementById("saveButton");
-    const swatchBox = document.getElementById("swatch-box"); // Correcte ID gebruiken
+let global = {
+    currentColor: "rgb(128, 128, 128)"
+};
 
-    let currentColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;
+const colors = ['red', 'green', 'blue'];
+const updateSliders = (r, g, b) => {
+
+    const values = [r, g, b];
+
+    colors.forEach((color, index) => {
+        const slider = document.getElementById(`${color}-slider`);
+        const valueDisplay = document.getElementById(`${color}-value`);
+
+        if (slider && valueDisplay) {
+            slider.value = values[index];
+            valueDisplay.textContent = values[index];
+        }
+    });
+};
+
+const parseRGB = (color) => {
+    const rgbMatch = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    return rgbMatch ? [rgbMatch[1], rgbMatch[2], rgbMatch[3]] : null;
+};
+
+const setColor = (color) => {
+    const colorBox = document.getElementById("color-box");
+    global.currentColor = color;
+    colorBox.style.backgroundColor = global.currentColor;
+
+    const rgbValues = parseRGB(color);
+    if (rgbValues) {
+        updateSliders(...rgbValues);
+    }
+};
+
+const setup = () => {
+    const sliders = colors.map(color => ({
+        slider: document.getElementById(`${color}-slider`),
+        value: document.getElementById(`${color}-value`)
+    }));
 
     const updateColor = () => {
-        let r = red.value;
-        let g = green.value;
-        let b = blue.value;
-        currentColor = `rgb(${r}, ${g}, ${b})`;
-        colorBox.style.backgroundColor = currentColor;
-    }
-
-    const showColorNumber = () => {
-        let txtOutputRed = document.getElementById("txtOutput1");
-        let txtOutputGreen = document.getElementById("txtOutput2");
-        let txtOutputBlue = document.getElementById("txtOutput3");
-
-        txtOutputRed.innerHTML = "Red " + red.value.toString();
-        txtOutputGreen.innerHTML = "Green " + green.value.toString();
-        txtOutputBlue.innerHTML = "Blue " + blue.value.toString();
-    }
-
-    const addToSwatch = () => {
-        // const swatchBox = document.getElementById("savedSwatches"); // Deze lijn verwijderen
-
-        const box = document.createElement("div");
-        box.classList.add("swatch-item");
-        box.style.backgroundColor = currentColor;
-
-        const button = document.createElement("button");
-
-        const removeSwatch = (event) => {
-            event.target.parentElement.remove();
-        };
-
-        button.addEventListener("click", removeSwatch);
-        button.classList.add("remove-button");
-        button.textContent = "✖";
-
-        box.appendChild(button);
-        swatchBox.appendChild(box);
+        const rgb = sliders.map(({ slider, value }) => {
+            const colorValue = slider.value;
+            value.textContent = colorValue;
+            return colorValue;
+        });
+        setColor(`rgb(${rgb.join(', ')})`);
     };
 
-    saveButton.addEventListener("click", addToSwatch);
-
-    red.addEventListener("input", updateColor);
-    green.addEventListener("input", updateColor);
-    blue.addEventListener("input", updateColor);
-
-    red.addEventListener("input", showColorNumber);
-    green.addEventListener("input", showColorNumber);
-    blue.addEventListener("input", showColorNumber);
+    sliders.forEach(({ slider }) => {
+        slider.addEventListener("input", updateColor);
+    });
 
     updateColor();
-    showColorNumber();
-}
+    document.querySelector("#save-button").addEventListener("click", addToSwatch);
+};
+
+const addToSwatch = () => {
+    const swatchBox = document.querySelector("#swatch-box");
+    const box = document.createElement("div");
+    box.classList.add("swatch-item");
+    box.style.backgroundColor = global.currentColor;
+    box.addEventListener("click", (event) => {
+        setColor(event.target.style.backgroundColor);
+    });
+
+    const button = document.createElement("button");
+    button.classList.add("remove-button");
+    button.textContent = "✖";
+    button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        event.target.parentElement.remove();
+    });
+
+    box.appendChild(button);
+    swatchBox.appendChild(box);
+};
 
 window.addEventListener("load", setup);
-

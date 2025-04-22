@@ -54,6 +54,7 @@ const bewerkNieuwePersoon = () => {
 };
 
 const bewaarBewerktePersoon = () => {
+    console.log("Klik op de knop bewaar");
     valideer();
 
     const voornaam = document.getElementById("txtVoornaam").value.trim();

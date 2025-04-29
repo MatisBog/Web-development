@@ -1,0 +1,39 @@
+body{
+    width: 70%;
+    margin: auto;
+    font-size: 1em;
+}
+input{
+    width: 95%;
+}
+label{
+    font-size: 75%;
+}
+p{
+    font-size: 50%;
+}
+#goButton{
+    width: 95%;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    font-size: 90%;
+
+}
+h2{
+    margin-top: 40px;
+}
+.history-item {
+    border: 1px solid #444;
+    height: 100%;
+}
+
+.history-item button {
+    transition: all 0.3s;
+}
+
+.history-item button:hover {
+    background-color: #333 !important;
+}
